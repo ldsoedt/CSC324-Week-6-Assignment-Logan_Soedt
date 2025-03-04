@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class ToDoListApp {
     // Stores the list of tasks
     private static ArrayList<String> tasks = new ArrayList<>();
+    private static ArrayList<Int> priorities = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // Scanner for user input
@@ -53,7 +54,22 @@ public class ToDoListApp {
         System.out.print("Enter task: ");
         String task = scanner.nextLine(); // Read task from user
         tasks.add(task); // Add task to the list
+        assignPriority(scanner);
         System.out.println("Task added!"); // Confirmation message
+    }
+    /**
+     * Method to add priority to the tasks
+     */
+
+    private static void assignPriority(Scanner scanner) {
+        try{
+             System.out.print("Enter task priority (higher numbers = higher priority): ")
+            int priority = Integer.parseInt(scanner.nextLine());
+            priorities.add(priority);
+
+        }catch(NumberFormatException e){
+            System.out.println("Error: Invalid string format. Cannot convert to integer.");
+        }
     }
 
     /**
@@ -66,7 +82,7 @@ public class ToDoListApp {
             System.out.println("\nYour Tasks:");
             // Loop through the list and display each task with a number
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println((i + 1) + ". " + tasks.get(i));
+                System.out.println((i + 1) + ". " + tasks.get(i) + "Priority level: " + priorities.get(i));
             }
         }
     }
@@ -85,6 +101,7 @@ public class ToDoListApp {
         // Validate the task number before removing
         if (index > 0 && index <= tasks.size()) {
             tasks.remove(index - 1); // Remove task (index is 1-based, ArrayList is 0-based)
+            priorities.remove(index - 1); //removed the task's priority
             System.out.println("Task removed."); // Confirmation message
         } else {
             System.out.println("Invalid task number."); // Handle invalid input

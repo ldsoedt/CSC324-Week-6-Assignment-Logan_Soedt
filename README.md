@@ -5,6 +5,7 @@
 ## **Overview**
 This is a simple **To-Do List application** built in **Java**. It allows users to:
 ✅ **Add tasks**  
+✅ **Add priority to task upon creation**
 ✅ **View tasks**  
 ✅ **Remove tasks**  
 ✅ **Exit the application**  
